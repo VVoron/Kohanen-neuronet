@@ -1,4 +1,5 @@
 import random
+#приложения грф интерфейс
 
 import numpy as np
 
@@ -41,7 +42,6 @@ x = np.reshape(np.zeros((N-2)*M), (M, N-2))
 for i in range(M):
     for j in range(N-2):
         x[i][j] = np.round((x_0[i][j] - min(b[j])) / (max(b[j]) - min(b[j])), 2)
-print(x)
 #Первые кластеры
 count = 0 #Количество кластеров
 w = np.reshape(np.zeros((N-2)*M), (M, (N-2)))
@@ -69,7 +69,6 @@ for i in range(M):
 ChildForClasters = ['']*(count+1)
     # np.reshape(np.array(' ' * 1 * (count+1)), (count+1, 1)).tolist()
 
-print(ChildForClasters)
 steps = 6
 for z in range(steps):
     v = 0.3 - 0.05*z
@@ -87,7 +86,7 @@ for z in range(steps):
         for j in range(N-2):
             w[bestR][j] += v * (x[number][j] - w[bestR][j])
 
-print(x)
+
 for i in range(M):
     R = np.zeros(count+1)
     for j in range(count+1):
@@ -97,7 +96,6 @@ for i in range(M):
     bestR = min(R)
     bestR = list(R).index(bestR)
     ChildForClasters[bestR] += '%s ' % (i+1)
-    print(ChildForClasters)
 
 
 for i in range(len(ChildForClasters)):
